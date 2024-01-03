@@ -1,9 +1,9 @@
-// components/Cube.jsx
+// Cube.jsx
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { MeshStandardMaterial } from 'three';
 
-const Cube = ({ position, color }) => {
+const Cube = ({ position, color, onClick }) => {
   const meshRef = useRef();
 
   useFrame(() => {
@@ -14,7 +14,11 @@ const Cube = ({ position, color }) => {
   });
 
   return (
-    <mesh ref={meshRef} position={position}>
+    <mesh
+      ref={meshRef}
+      position={position}
+      onClick={onClick} // Trigger onClick event
+    >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={color} />
     </mesh>
@@ -22,4 +26,5 @@ const Cube = ({ position, color }) => {
 };
 
 export default Cube;
+
 
